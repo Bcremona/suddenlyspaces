@@ -9,7 +9,7 @@ export default function PropertyCard({ property }) {
 
   return (
     <Link to={`/properties/${property.id}`} >
-    <div className="border rounded-lg p-4 shadow-md mb-3 flex flex-row">
+    <div className="border rounded-lg p-4 shadow-md m-2 flex flex-row">
       <div className="w-1/3 mr-4">
         <img src={property.imageUrl} alt={property.title} className="w-full h-48 object-cover mb-4 rounded-md" />
       </div>

@@ -7,7 +7,7 @@ router.get("/", getProperties);
 router.get("/:id", getPropertyById);
 router.get("/landlord/:landlordId", getPropertiesByLandlord);
 router.post("/", createProperty);
-router.put("/:id", updateProperty);
+router.put("/edit/:id", updateProperty);
 router.delete("/:id", deleteProperty);
 
 export default router;

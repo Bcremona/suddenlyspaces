@@ -22,7 +22,7 @@ export default function PropertyDetail() {
         <BackButton />
         {property === null && <p>Loading...</p>}
         {property && (
-        <div>
+        <div className="max-w-4xl w-full flex flex-col items-start">
             <img src={property.imageUrl} alt={property.title} className="w-full shadow-lg" />
             <h1 className="text-4xl font-bold mt-4">{property.title}</h1>
             <h3 className="text-black/70 text-2xl font-semibold mt-1">{property.location}</h3>

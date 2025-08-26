@@ -15,7 +15,7 @@ export const getPropertyById = async (propertyId) => {
 
 // Updates a property
 export const updateProperty = async (propertyId, property) => {
-  const res = await api.put(`/properties/${propertyId}`, property);
+  const res = await api.put(`/properties/edit/${propertyId}`, property);
   return res.data;
 };
 

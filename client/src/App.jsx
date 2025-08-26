@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar.jsx";
 import Login from "./pages/Login.jsx";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext.jsx";
+import EditProperty from "./pages/EditProperty.jsx";
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
         <Route path="/landlord" element={<LandlordDashboard />} />
         <Route path="/tenant" element={<TenantSearch />} />
         <Route path="/properties/:id" element={<PropertyDetail />} />
-        {/*<Route path="/properties/edit/:id" element={<EditProperty />} />*/}
+        <Route path="/properties/edit/:id" element={<EditProperty />} />
       </Routes>
     </BrowserRouter>
   );
