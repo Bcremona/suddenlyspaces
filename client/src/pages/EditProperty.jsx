@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/authContext.jsx";
 import { useParams } from "react-router-dom";
-import { BackButton } from "../components/BackButton.jsx"; 
+import BackButton from "../components/BackButton.jsx";
 import { Navigate } from "react-router-dom";
 import { getPropertyById, updateProperty } from "../services/propertyService.js";
 

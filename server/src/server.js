@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import propertyRoutes from "./routes/propertyRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import riskRoutes from "./routes/riskRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,8 @@ app.use(express.json());
 
 app.use("/api/properties", propertyRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/risk", riskRoutes);
+
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
