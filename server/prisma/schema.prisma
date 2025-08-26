@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Landlord {
+  id         Int        @id @default(autoincrement())
+  name       String
+  email      String     @unique
+  password   String     @map("password_hash")
+  properties Property[]
+
+  @@map("landlords") // mapa a tabla real
+}
+
+model Tenant {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String @map("password_hash")
+
+  @@map("tenants")
+}
+
+model Property {
+  id         Int       @id @default(autoincrement())
+  title      String
+  location   String
+  rentAmount Float     @map("rent_amount")
+  leaseType  String    @map("lease_type")
+  landlordId Int       @map("landlord_id")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt      @map("updated_at")
+
+  landlord   Landlord  @relation(fields: [landlordId], references: [id])
+
+  @@map("properties")
+}
