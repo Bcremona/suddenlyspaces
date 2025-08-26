@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import LandlordDashboard from "./pages/LanlordDashboard.jsx";
 import TenantSearch from "./pages/TenantSearch.jsx";
+import PropertyDetail from "./pages/PropertyDetail.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Login from "./pages/Login.jsx";
 import { useContext } from "react";
@@ -35,6 +36,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/landlord" element={<LandlordDashboard />} />
         <Route path="/tenant" element={<TenantSearch />} />
+        <Route path="/properties/:id" element={<PropertyDetail />} />
+        {/*<Route path="/properties/edit/:id" element={<EditProperty />} />*/}
       </Routes>
     </BrowserRouter>
   );

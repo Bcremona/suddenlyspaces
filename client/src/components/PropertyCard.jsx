@@ -8,6 +8,7 @@ export default function PropertyCard({ property }) {
   const { user } = useContext(AuthContext);
 
   return (
+    <Link to={`/properties/${property.id}`} >
     <div className="border rounded-lg p-4 shadow-md mb-3">
       <h2 className="text-lg font-bold">{property.title}</h2>
       <p className="text-gray-600">{property.location}</p>
@@ -24,5 +25,6 @@ export default function PropertyCard({ property }) {
         </>
       )}
     </div>
+    </Link>
   );
 }

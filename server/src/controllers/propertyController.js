@@ -52,6 +52,20 @@ export const getPropertiesByLandlord = async (req, res) => {
   }
 };
 
+export const updateProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, location, rentAmount, leaseType } = req.body;
+    await prisma.property.update({
+      where: { id: parseInt(id) },
+      data: { title, location, rentAmount: parseFloat(rentAmount), leaseType },
+    });
+    res.json({ message: "Property updated" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const deleteProperty = async (req, res) => {
   try {
     const { id } = req.params;

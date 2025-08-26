@@ -7,6 +7,18 @@ export const getProperties = async () => {
   return res.data;
 };
 
+// Gets a property by ID
+export const getPropertyById = async (propertyId) => {
+  const res = await api.get(`/properties/${propertyId}`);
+  return res.data;
+};
+
+// Updates a property
+export const updateProperty = async (propertyId, property) => {
+  const res = await api.put(`/properties/${propertyId}`, property);
+  return res.data;
+};
+
 // Creates a new property
 export const createProperty = async (property) => {
   const res = await api.post("/properties", property);
