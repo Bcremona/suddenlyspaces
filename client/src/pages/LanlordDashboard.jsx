@@ -18,7 +18,7 @@ export default function LandlordDashboard() {
 
   useEffect(() => {
     loadProperties();
-  }, [properties]);
+  }, []);
 
   const loadProperties = async () => {
     const data = await getPropertiesByLandlord(user.id); // placeholder ID for now -- if Auth is added, replace with real ID value
@@ -30,6 +30,7 @@ export default function LandlordDashboard() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(form);
     await createProperty(form);
     setForm({ title: "", location: "", rentAmount: "", leaseType: "", landlordId: 1 });
     loadProperties();
@@ -37,15 +38,15 @@ export default function LandlordDashboard() {
 
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Landlord Dashboard</h1>
-
+      <h1 className="text-3xl font-bold mb-4">Landlord Dashboard</h1>
+      <h1 className="text-xl font-bold mb-4">Add New Property</h1>
       <form onSubmit={handleSubmit} className="mb-6 space-y-3">
         <input
           name="title"
           value={form.title}
           onChange={handleChange}
           placeholder="Property Title"
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded"
           required
         />
         <input
@@ -53,7 +54,7 @@ export default function LandlordDashboard() {
           value={form.location}
           onChange={handleChange}
           placeholder="Location"
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded"
           required
         />
         <input
@@ -61,21 +62,25 @@ export default function LandlordDashboard() {
           value={form.rentAmount}
           onChange={handleChange}
           placeholder="Rent Amount"
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded"
           required
         />
-        <input
-          name="leaseType"
+        <select
+          placeholder="Lease Type"
           value={form.leaseType}
           onChange={handleChange}
-          placeholder="Lease Type"
-          className="border p-2 w-full"
-          required
-        />
+          className="border p-2 w-full rounded"
+        >
+          <option value="residential">Residential</option>
+          <option value="short-term">Short Term</option>
+          <option value="coworking">Coworking</option>
+        </select>
         <button className="bg-blue-500 text-white px-4 py-2 rounded">
           Add Property
         </button>
       </form>
+
+      <h1 className="text-xl font-bold mb-4">Your Properties:</h1>
 
       {properties.map((p) => (
         <PropertyCard key={p.id} property={p} />

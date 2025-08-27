@@ -27,6 +27,10 @@ export default function TenantSearch() {
     && p.rentAmount <= filters.maxPrice
   );
 
+  const cleanFilters = () => {
+    setFilters({ city: "", minPrice: 0, maxPrice: 10000, leaseType: "" });
+  };
+
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Tenant Search</h1>
@@ -38,7 +42,7 @@ export default function TenantSearch() {
         placeholder="Filter by city..."
         value={filters.city}
         onChange={(e) => setFilters({ ...filters, city: e.target.value })}
-        className="border p-2 mb-4"
+        className="border p-2 mb-4 rounded"
       />
       <label className="font-semibold self-center mb-4">Price Range:</label>
       <input 
@@ -46,7 +50,7 @@ export default function TenantSearch() {
         placeholder="0" 
         value={filters.minPrice} 
         onChange={(e) => setFilters({ ...filters, minPrice: e.target.value })}
-        className="border p-2 mb-4"
+        className="border p-2 mb-4 rounded"
       />
       <label className="font-semibold self-center mb-4">To:</label>
       <input 
@@ -54,19 +58,25 @@ export default function TenantSearch() {
         placeholder="10000" 
         value={filters.maxPrice} 
         onChange={(e) => setFilters({ ...filters, maxPrice: e.target.value })}
-        className="border p-2 mb-4"
+        className="border p-2 mb-4 rounded"
       />
       <label className="font-semibold self-center mb-4">Lease Type:</label>
       <select
         placeholder="Lease Type"
         value={filters.leaseType}
         onChange={(e) => setFilters({ ...filters, leaseType: e.target.value })}
-        className="border p-2 mb-4"
+        className="border p-2 mb-4 rounded"
         >
           <option value="residential">Residential</option>
           <option value="short-term">Short Term</option>
           <option value="coworking">Coworking</option>
         </select>
+      <button 
+        onClick={cleanFilters} 
+        className="bg-lime-900/40 text-black px-4 py-2 rounded mb-4 hover:bg-lime-900/60 hover:scale-105 transition-transform"
+      >
+        Clear Filters
+      </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.length === 0 && (<p>Loading properties for you...</p>)}

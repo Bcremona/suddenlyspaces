@@ -7,6 +7,7 @@ import Login from "./pages/Login.jsx";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext.jsx";
 import EditProperty from "./pages/EditProperty.jsx";
+import MainPage from "./pages/MainPage.jsx";
 
 function App() {
 
@@ -29,11 +30,11 @@ function App() {
                 <Navigate to="/tenant" replace />
               )
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate to="/main" replace />
             )
           }
         />
-            
+        <Route path="/main" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/landlord" element={<LandlordDashboard />} />
         <Route path="/tenant" element={<TenantSearch />} />

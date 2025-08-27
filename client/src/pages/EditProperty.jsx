@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/authContext.jsx";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
-import { Navigate } from "react-router-dom";
 import { getPropertyById, updateProperty } from "../services/propertyService.js";
 
 export default function EditProperty() {
@@ -38,12 +37,12 @@ export default function EditProperty() {
     e.preventDefault();
     await updateProperty(id, form);
     setForm({ title: "", location: "", rentAmount: "", leaseType: "", landlordId: 1 });
-    Navigate(-1);
+    window.history.back();
   };
 
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Landlord Dashboard</h1>
+      <h1 className="text-xl font-bold mt-12 mb-4">Editing:</h1>
         <BackButton />
 
       <form onSubmit={handleSubmit} className="mb-6 space-y-3">
@@ -79,7 +78,7 @@ export default function EditProperty() {
           className="border p-2 w-full"
           required
         />
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 hover:scale-105 transition-transform">
           Edit Property
         </button>
       </form>
