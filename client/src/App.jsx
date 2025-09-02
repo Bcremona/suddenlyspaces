@@ -5,7 +5,7 @@ import PropertyDetail from "./pages/PropertyDetail.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Login from "./pages/Login.jsx";
 import { useContext } from "react";
-import { AuthContext } from "./context/authContext.jsx";
+import { AuthContext } from "./hooks/auth-context.js";
 import EditProperty from "./pages/EditProperty.jsx";
 import MainPage from "./pages/MainPage.jsx";
 

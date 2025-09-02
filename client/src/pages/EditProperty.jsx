@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../context/authContext.jsx";
+import { AuthContext } from "../hooks/auth-context.js";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
 import { getPropertyById, updateProperty } from "../services/propertyService.js";

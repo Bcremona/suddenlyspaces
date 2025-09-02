@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/authContext.jsx";
+import { AuthContext } from "../hooks/auth-context.js";
 import { Link } from "react-router-dom";
 import { deleteProperty } from "../services/propertyService.js";
 

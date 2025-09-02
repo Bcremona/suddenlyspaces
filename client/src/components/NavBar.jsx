@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import SuddenlySpacesLogo from '../assets/SuddenlySpacesLogo.png'
 import { useContext } from 'react'
-import { AuthContext } from '../context/authContext.jsx'
+import { AuthContext } from "../hooks/auth-context.js";
 
 export default function NavBar() {
 

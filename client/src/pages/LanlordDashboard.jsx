@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { createProperty, getPropertiesByLandlord } from "../services/propertyService";
 import PropertyCard from "../components/PropertyCard";
-import { AuthContext } from "../context/authContext.jsx";
+import { AuthContext } from "../hooks/auth-context.js";
+import { Link } from "react-router-dom";
 
 export default function LandlordDashboard() {
 
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   const [properties, setProperties] = useState([]);
   const [form, setForm] = useState({
@@ -39,6 +40,14 @@ export default function LandlordDashboard() {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold mb-4">Landlord Dashboard</h1>
+      <Link to="/login">
+        <button 
+          onClick={logout}
+          className="bg-red-500 text-white px-4 py-2 rounded mb-6"
+        >
+          Logout
+        </button>
+      </Link>
       <h1 className="text-xl font-bold mb-4">Add New Property</h1>
       <form onSubmit={handleSubmit} className="mb-6 space-y-3">
         <input

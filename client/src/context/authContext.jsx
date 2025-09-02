@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { AuthContext } from "../hooks/auth-context";
 
-export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -27,6 +27,14 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("user"); 
   };
+
+  const oneHour = 60 * 60 * 1000;
+  
+  setTimeout(() => {
+    logout();
+    console.log("Session expired, please log in again.");
+  }, oneHour);
+  
 
   return (
     <AuthContext.Provider value={{
